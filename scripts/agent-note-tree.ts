@@ -16,7 +16,7 @@ const AGENT_NOTE_LIFECYCLES = ['proposed', 'implemented', 'rejected'] as const
  * class is a deliberate act: extend this list AND the README's Classification
  * section. The gate rejects any folder not listed here.
  */
-export const AGENT_NOTE_CLASSES = ['feature', 'bug-fix', 'simplification', 'architecture', 'process', 'testing'] as const
+export const AGENT_NOTE_CLASSES = ['feature', 'bug-fix', 'simplification', 'architecture', 'process', 'testing', 'exploration'] as const
 
 /** Historical implemented notes live outside the active lifecycle tree. */
 const AGENT_NOTE_ARCHIVE = 'archived'
