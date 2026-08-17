@@ -30,6 +30,7 @@ Each Agent Note belongs to one path-encoded class from the closed set in `script
 | `architecture` | A structural decision about the **shipped source** — how packages relate, what the runtime vocabulary is. |
 | `process` | Tooling, policy, or workflow **around** the code — gates, the package manager, vendoring — not runtime behavior. |
 | `testing` | Test infrastructure and strategy. |
+| `exploration` | Scratch findings during repo exploration — provisional observations, code archaeology, reverse-engineering notes. Not a formal design record. |
 
 The `architecture` / `process` line: **architecture** is about the source we ship; **process** is the surrounding tooling and workflow. (`refactor` is deliberately absent — it overlaps `simplification`, whose discriminator, "does observable behavior change?", already covers it.)
 

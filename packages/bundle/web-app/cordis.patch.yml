@@ -178,7 +178,7 @@
       name: '@deepseek-ai/dsh-client-locale'
 
     - id: ui-layout
-      name: '@deepseek-ai/dsh-client-ui-layout'
+      name: '@deepseek-ai/dsh-client-ui-layout-compact'
 
     - id: ui-sidebar
       name: '@deepseek-ai/dsh-client-ui-sidebar'
