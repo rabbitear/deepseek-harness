@@ -20,7 +20,7 @@
     },
     "./invariant": {
       "types": "./lib/types/invariant.d.ts",
-      "default": "./lib/index.js"
+      "default": "./lib/invariant.js"
     },
     "./src/*": "./src/*",
     "./package.json": "./package.json"

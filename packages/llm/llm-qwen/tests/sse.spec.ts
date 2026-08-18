@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { parseSse, parseFallbackBody, LlmStreamClosedError } from '../src/sse.ts'
+import type { SseEvent } from '../src/sse.ts'
 import { mapTokenUsage, toFinishReason } from '../src/adapter.ts'
 
 /** Build a ReadableStream from a string for parseSse input. */
@@ -13,8 +14,8 @@ function streamOf(text: string): ReadableStream<Uint8Array> {
 }
 
 /** Collect all events from a string body. */
-async function collect(text: string) {
-  const out: unknown[] = []
+async function collect(text: string): Promise<SseEvent[]> {
+  const out: SseEvent[] = []
   for await (const e of parseSse(streamOf(text))) out.push(e)
   return out
 }
@@ -45,7 +46,7 @@ describe('parseSse', () => {
     // A body with data lines but no [DONE].
     const body = ['data: {"choices":[{"delta":{"content":"x"}}]}', '', ''].join('\n')
     const events = await collect(body)
-    expect(events[0].kind).toBe('chunk')
+    expect(events[0]!.kind).toBe('chunk')
   })
 
   it('throws LlmStreamClosedError for a recognized-but-invalid body', async () => {
