@@ -30,10 +30,14 @@ export const inject = ['llm']
 const NS = settingsNamespace('llm-qwen')
 const PROVIDER = 'qwen-local'
 const DEFAULT_MODEL = 'Qwen/Qwen3-8B'
+/** Default endpoint: the host's torch-native server on the loopback network. */
+const DEFAULT_BASE_URL = 'http://127.0.0.1:8890'
 
 /** Plugin config, validated by the same-named schemastery schema. */
 export interface Config {
-  /** Local endpoint base; `/v1/chat/completions` is appended. */
+  /** Local endpoint base; `/v1/chat/completions` is appended. Defaults
+   * to the host's loopback torch-native address, so boot never depends on
+   * the endpoint being configured; the server is only contacted per request. */
   baseURL: string
   /** Model id advertised by the endpoint and forwarded on requests. */
   modelId?: string
@@ -48,7 +52,7 @@ export interface Config {
 }
 
 export const Config: z<Config> = z.object({
-  baseURL: z.string().required(),
+  baseURL: z.string().default(DEFAULT_BASE_URL),
   modelId: z.string().default(DEFAULT_MODEL),
   defaultContextWindow: z.number().step(1).min(1).default(131_072),
   maxTokens: z.number().step(1).min(1).max(Number.MAX_SAFE_INTEGER).default(4096),

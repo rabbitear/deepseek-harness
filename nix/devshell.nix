@@ -35,6 +35,7 @@ pkgs.mkShell {
       nodejs
       pnpm
       pkgs.git
+      pkgs.nodejs
 
       # POSIX tools needed by pnpm's self-managed version shims, repo scripts,
       # and the bash-based test suites

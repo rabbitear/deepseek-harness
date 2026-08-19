@@ -450,8 +450,10 @@
     - id: llm-deepseek
       name: '@deepseek-ai/dsh-llm-deepseek'
 
-    # The local Qwen adapter. `baseURL` must point at an OpenAI-compatible
+    # The local Qwen adapter. `baseURL` points at an OpenAI-compatible
     # chat-completions endpoint serving a Qwen model (e.g. a local
-    # torch-native server). No auth by default.
+    # torch-native server) and defaults to the loopback torch-native
+    # address, so boot never depends on the endpoint being configured or
+    # reachable; the server is only contacted per request. No auth by default.
     - id: llm-qwen
       name: '@deepseek-ai/dsh-llm-qwen'

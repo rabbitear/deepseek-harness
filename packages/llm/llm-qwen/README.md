@@ -22,7 +22,7 @@ Registers provider route `qwen-local`, model id `Qwen/Qwen3-8B` (configurable).
 
 | Field | Default | Meaning |
 |---|---|---|
-| `baseURL` | required | Endpoint base; `/v1/chat/completions` is appended. |
+| `baseURL` | `http://127.0.0.1:8890` | Endpoint base; `/v1/chat/completions` is appended. |
 | `modelId` | `Qwen/Qwen3-8B` | Model id advertised and forwarded on requests. |
 | `defaultContextWindow` | `131072` | Context capacity when the model has no exact value. |
 | `maxTokens` | `4096` | Default per-request output cap. |
